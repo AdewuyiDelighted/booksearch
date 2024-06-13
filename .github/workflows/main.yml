@@ -31,6 +31,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y awscli
+    - name: Create SSH key file
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $GITHUB_WORKSPACE/key.pem
+        chmod 400 $GITHUB_WORKSPACE/key.pem
+
 
     - name: Deploy to EC2
       env:
