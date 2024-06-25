@@ -64,4 +64,7 @@ jobs:
                       docker pull $DOCKER_USERNAME/booksearch:latest
                       docker run -d $DOCKER_USERNAME/booksearch:latest"
 
-        ssh -o StrictHostKeyChecking=no -i $GITHUB_WORKSPACE/${KEY_NAME}.pem $INSTANCE_USER@$PUBLIC_DNS "$SSH_COMMANDS"
+       
+
+
+        ssh -o StrictHostKeyChecking=no -i/home/runner/work/booksearch/booksearch/${KEY_NAME}.pem $INSTANCE_USER@$PUBLIC_DNS "$SSH_COMMANDS"
