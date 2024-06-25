@@ -33,8 +33,8 @@ jobs:
         sudo apt-get install -y awscli
     - name: Create SSH key file
       run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $GITHUB_WORKSPACE/key.pem
-        chmod 400 $GITHUB_WORKSPACE/key.pem
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $WORKSPACE/key.pem
+        chmod 400 $WORKSPACE/key.pem
 
 
     - name: Deploy to EC2
@@ -67,4 +67,5 @@ jobs:
        
 
 
-        ssh -o StrictHostKeyChecking=no -i/home/runner/work/booksearch/booksearch/${KEY_NAME}.pem $INSTANCE_USER@$PUBLIC_DNS "$SSH_COMMANDS"
+      
+        ssh -o StrictHostKeyChecking=no -i $WORKSPACE/${KEY_NAME}.pem $INSTANCE_USER@$PUBLIC_DNS "$SSH_COMMANDS"
